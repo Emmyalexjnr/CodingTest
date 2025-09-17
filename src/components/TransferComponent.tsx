@@ -12,7 +12,7 @@ type StateType = {
     amount: string, recipientName: string, accountNumber: string, iban: string, swiftCode: string
 }
 
-const Transfer = (props: PropsType) => {
+const TransferComponent = (props: PropsType) => {
     const { paymentType } = props;
 
     const [state, setState] = React.useState<StateType>({ amount: '', recipientName: '', accountNumber: '', iban: '', swiftCode: '' });
@@ -39,9 +39,9 @@ const Transfer = (props: PropsType) => {
 
     const returnText = () => {
         if(paymentType === 'international') {
-            return 'Sending money within the same country'
+            return 'Send money locally'
         }
-        return 'Sending money to another country'
+        return 'Send money to another country'
     }
 
     const disabled = () => {
@@ -109,4 +109,4 @@ const Transfer = (props: PropsType) => {
     )
 }
 
-export default Transfer
+export default TransferComponent

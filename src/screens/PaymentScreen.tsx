@@ -1,9 +1,8 @@
 import { View, Text, ScrollView } from 'react-native'
 import React from 'react'
 import { Appbar, Button, SegmentedButtons } from 'react-native-paper';
-import { SafeAreaView } from 'react-native-safe-area-context';
 
-import Transfer from '../components/Transfer';
+import TransferComponent from '../components/TransferComponent';
 
 type StateType = {
     paymentType: 'domestic' | 'international'
@@ -41,7 +40,7 @@ const PaymentScreen = () => {
 
                 <View style={{ flex: 1 }}>
 
-                    <Transfer paymentType={state.paymentType} />
+                    <TransferComponent paymentType={state.paymentType} />
                 </View>
 
             </ScrollView>

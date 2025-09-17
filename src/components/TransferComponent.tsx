@@ -21,21 +21,9 @@ const TransferComponent = (props: PropsType) => {
         console.log('Submitted');
     };
 
-    const onChangeRecipientName = (value: string) => {
-        setState((prevState) => ({ ...prevState, recipientName: value }));
-    };
-    const onChangeAccountNumber = (value: string) => {
-        setState((prevState) => ({ ...prevState, accountNumber: value }));
-    };
-    const onChangeAmount = (value: string) => {
-        setState((prevState) => ({ ...prevState, amount: value }));
-    };
-    const onIbanChange = (value: string) => {
-        setState((prevState) => ({ ...prevState, iban: value }));
-    };
-    const onSwiftCodeChange = (value: string) => {
-        setState((prevState) => ({ ...prevState, swiftCode: value }));
-    };
+    const onChangeText = (value: string, type: 'recipientName' | 'accountNumber' | 'amount' | 'iban' | 'swiftCode') => {
+        setState((prevState) => ({ ...prevState, [type]: value }));
+    }
 
     const returnText = () => {
         if(paymentType === 'international') {
@@ -61,13 +49,13 @@ const TransferComponent = (props: PropsType) => {
                 <View style={{ gap: 20}}>
                     <TextInput
                         mode="outlined" value={state.iban}
-                        onChangeText={onIbanChange}
+                        onChangeText={(text) => onChangeText(text, 'iban')}
                         label="IBAN - 34" 
                         placeholder=""
                     />
                     <TextInput
                         mode="outlined" value={state.swiftCode}
-                        onChangeText={onSwiftCodeChange}
+                        onChangeText={(text) => onChangeText(text, 'swiftCode')}
                         label="SWIFT code"
                         placeholder=""
                     />
@@ -82,19 +70,19 @@ const TransferComponent = (props: PropsType) => {
             <View style={{ flex: 1 , gap: 20, marginTop: 20}}>
                 <TextInput
                     mode="outlined" value={state.recipientName}
-                    onChangeText={onChangeRecipientName}
+                    onChangeText={(text) => onChangeText(text, 'recipientName')}
                     label="Recipient Name"
                     placeholder=""
                 />
                 <TextInput
                     mode="outlined" value={state.accountNumber}
-                    onChangeText={onChangeAccountNumber}
+                    onChangeText={(text) => onChangeText(text, 'accountNumber')}
                     label="Account Number" keyboardType='numeric' 
                     placeholder=""
                 />
                 <TextInput
                     mode="outlined" value={state.amount}
-                    onChangeText={onChangeAmount}
+                    onChangeText={(text) => onChangeText(text, 'amount')}
                     label="Amount" keyboardType='numeric'
                     placeholder=""
                 />
